@@ -20,10 +20,22 @@
                             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-700">
                                 <div class="p-6">
                                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-200">
-                                        Status absensi hari ini
+                                        Status Absensi
                                     </h3>
-                                    <p class="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-200">
-                                    </p>
+                                    <div>
+                                        <p>
+                                            @if ($presence_by_name->where('date', date('Y-m-d'))->isEmpty())
+                                            <a href="/presensi/create" class="mt-2 text-xl font-bold text-red-500 dark:text-red-500">
+                                                <p><i class="fa-solid fa-triangle-exclamation"></i> Kamu belum mengambil absensi hari ini! <i class="fa-solid fa-triangle-exclamation"></i></p>
+                                            </a>
+                                            @else
+                                            <a href="/presensi/create" class="mt-2 text-xl font-bold text-green-500 dark:text-green-500">
+                                                <p><i class="fa-solid fa-square-check"></i> Terima kasih sudah hadir untuk hari ini! <i class="fa-solid fa-square-check"></i></p>
+                                            </a>
+                                            @endif
+                                            </p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

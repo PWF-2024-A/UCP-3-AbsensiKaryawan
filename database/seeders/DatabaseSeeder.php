@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Division::factory(100)->create();
-        Presence::factory(100)->create();
+        Presence::factory(10)->create();
 
         // Presence::create([
         //     'name' => 'Aisyah',

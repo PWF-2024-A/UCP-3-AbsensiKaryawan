@@ -10,7 +10,14 @@ class Presence extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'divisions_id', 'status', 'date', 'in', 'out', 'image', 'reason',
+        'name',
+        'divisions_id',
+        'status',
+        'date',
+        'in',
+        'out',
+        'image',
+        'reason',
     ];
 
     // protected $guarded = ['id'];

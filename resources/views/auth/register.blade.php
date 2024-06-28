@@ -18,15 +18,15 @@
 
         <!-- Address -->
         <div class="mt-4">
-            <x-input-label for="address" :value="('Address')" />
-            <x-text-input id="address" class="block w-full mt-1" type="address" name="address" :value="old('address')" required autocomplete="username" />
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block w-full mt-1" type="text" name="address" :value="old('address')" required autocomplete="email" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
         <!-- Phone Number -->
         <div class="mt-4">
-            <x-input-label for="phonenumber" :value="('Phone')" />
-            <x-text-input id="phonenumber" class="block w-full mt-1" type="phonenumber" name="phonenumber" :value="old('phonenumber')" required autocomplete="username" />
+            <x-input-label for="phonenumber" :value="__('Phone')" />
+            <x-text-input id="phonenumber" class="block w-full mt-1" type="text" name="phonenumber" :value="old('phonenumber')" required autocomplete="address" />
             <x-input-error :messages="$errors->get('phonenumber')" class="mt-2" />
         </div>
 

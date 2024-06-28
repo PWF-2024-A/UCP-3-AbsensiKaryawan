@@ -6,9 +6,13 @@
     </x-slot>
 
     @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
+
+        <div class="w-full max-w-md mx-auto">
+            <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
         </div>
+
     @endif
 
     <div class="py-12">
@@ -92,6 +96,7 @@
     </div>
 
     <script>
+
         document.addEventListener('DOMContentLoaded', (event) => {
             const select = document.getElementById('status');
             const imageInput = document.getElementById('image');
@@ -113,15 +118,19 @@
                 }
             });
 
-            imageInput.addEventListener('change', function() {
+            function previewImage() {
+                const image = document.querySelector('#image');
+                const imgPreview = document.querySelector('.img-preview');
+
+                imgPreview.style.display = 'block';
+
                 const oFReader = new FileReader();
-                oFReader.readAsDataURL(imageInput.files[0]);
+                oFReader.readAsDataURL(image.files[0]);
 
                 oFReader.onload = function(oFREvent) {
                     imgPreview.src = oFREvent.target.result;
-                    imageInput.insertAdjacentElement('afterend', imgPreview);
                 }
-            });
+            }
 
             function updateTime() {
                 const timeInput = document.getElementById('in');

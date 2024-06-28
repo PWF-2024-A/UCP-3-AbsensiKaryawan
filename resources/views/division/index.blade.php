@@ -3,10 +3,11 @@
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Divisi Karyawan') }}
         </h2>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-10 lg:px-12">
+        <div class="max-w-6xl mx-auto sm:px-10 lg:px-12">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="px-6 pt-6 mb-5">
                     <div>
@@ -14,50 +15,35 @@
                     </div>
                 </div>
                 <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                    <table class="min-w-full bg-white dark:bg-gray-800">
+                        <thead>
                             <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Nama Divisi
+                                <th scope="col" class="w-3/4 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-100 px-28 dark:bg-gray-700">
+                                    Division
                                 </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
+                                <th scope="col" class="w-1/4 px-10 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-100 dark:bg-gray-700">
+                                    Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($divisions as $division)
-                            <tr class="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700">
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <p>{{ $division->title }}</p>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex space-x-3">
-                                        <a href="{{ route('division.edit', $division) }}" class="text-blue-400 hover:underline dark:text-blue-200">
-                                            Edit
-                                        </a>
-                                        <form action="{{ route('division.destroy', $division) }}" method="Post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit"
-                                            class="text-red-600 dark:text-red-400 whitespace-nowrap">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr class="bg-white dark:bg-gray-800">
-                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                    Empty
-                                </td>
-                            </tr>
-                            @endforelse
+                            @foreach ($divisions as $division)
+                                <tr class="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700">
+                                    <td class="flex items-center w-1/2 py-4 text-sm font-medium text-gray-900 px-28 justify-items-center whitespace-nowrap dark:text-white">
+                                        {{ $division->title }}
+                                    </td>
+                                    <td class="w-1/2 px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <x-edit-button href="{{ route('division.edit', $division) }}" />
+                                            <x-delete-button :action="route('division.destroy', $division->id)" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

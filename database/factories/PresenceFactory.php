@@ -21,7 +21,7 @@ class PresenceFactory extends Factory
         return [
             'name' => fake()->name(),
             // 'users_id' => User::inRandomOrder()->first()->id,
-            'divisions_id' => Division::inRandomOrder()->first()->id,
+            'division_id' => Division::inRandomOrder()->first()->id,
             'date' => fake()->date('d/m/Y'),
             'in' => fake()->date('H:i'),
             'out' => fake()->date('H:i'),

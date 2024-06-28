@@ -67,11 +67,27 @@ class PresenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Presence $presence)
+    // public function show(Presence $presence)
+    // {
+    //     return view('presensi.show', [
+    //         'title' => 'Dashboard | Presensi',
+    //         'active' => 'dashboard',
+    //         'presences' => Presence::all(),
+    //         'presence' => $presence
+    //     ]);
+
+    // }
+
+    public function show($id)
     {
+        $presence = Presence::find($id);
+
+        if (!$presence) {
+            abort(404); // atau tindakan lain jika data tidak ditemukan
+        }
+
         return view('presensi.show', [
-            "title" => "Dashboard | Absensi",
-            'active' => 'dashboard',
+            'title' => 'Detail Presensi',
             'presence' => $presence,
         ]);
     }

@@ -36,21 +36,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/reports', [UserDashboardController::class, 'reports'])->name('user.report');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/presensi/create', [PresenceController::class, 'index'])->name('presensi.index');
     Route::post('/presensi', [PresenceController::class, 'store'])->name('presensi.store');
-    // Route::get('/presensi/create', [PresenceController::class, 'create'])->name('presensi.create');
+    Route::get('/presensi/{id}', [PresenceController::class, 'show'])->name('presensi.show');
     Route::get('/presensi/{presence}/edit', [PresenceController::class, 'edit'])->name('presensi.edit');
     Route::put('/presensi/{presence}', [PresenceController::class, 'update'])->name('presensi.update');
-
-    // Route::resource('/presensi', PresenceController::class);
-
+    Route::delete('/presensi/{presence}', [PresenceController::class, 'destroy'])->name('presensi.destroy');
 
 Route::middleware('admin')->group(function(){
         Route::get('/karyawan', [UserController::class, 'index'])->name('user.index');

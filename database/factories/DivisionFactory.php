@@ -17,7 +17,7 @@ class DivisionFactory extends Factory
     public function definition(): array
     {
         return [
-            'users_id' => rand(1, 100),
+            'user_id' => rand(1, 100),
             'title' => ucwords(fake()-> sentence())
         ];
     }

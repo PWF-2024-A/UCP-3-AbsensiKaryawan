@@ -6,9 +6,11 @@
     </x-slot>
 
     @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
+    <div class="w-full max-w-md mx-auto mt-4">
+        <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
+            <span class="block sm:inline">{{ session('success') }}</span>
         </div>
+    </div>
     @endif
 
     <div class="py-12">
@@ -38,19 +40,6 @@
                                     <div class="mb-3">
                                         <x-input-label for="status" class="form-label">Status</x-input-label>
                                         <x-select name="status" id="status" :options="['Hadir' => 'Hadir', 'Sakit' => 'Sakit', 'Cuti' => 'Cuti']" />
-                                    </div>
-
-                                    <div class="mb-3" id="bukti_sakit" style="display: none;">
-                                        <x-input-label for="bukti_sakit" class="form-label">Unggah Bukti</x-input-label>
-                                        <x-file-input name="image" id="image" onchange="previewImage()" />
-                                        <x-input-error class="mt-2" :messages="$errors->get('image')" />
-                                        <div class="form-text" id="buktiSakit">Silahkan unggah bukti sakit! Pastikan tidak lebih dari <b>1MB.</b></div>
-                                    </div>
-
-                                    <div class="mb-3" id="alasan-cuti" style="display: none;">
-                                        <x-input-label for="alasan_cuti" class="form-label">Alasan Cuti</x-input-label>
-                                        <x-textarea-input name="reason" class="form-control" rows="2"></x-textarea-input>
-                                        <x-input-error class="mt-2" :messages="$errors->get('reason')" />
                                     </div>
 
                                     <div class="flex flex-wrap -mx-2">
@@ -91,35 +80,6 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const select = document.getElementById('status');
-            const imageInput = document.getElementById('image');
-            const imgPreview = document.querySelector('.img-preview');
-
-            select.addEventListener('change', function() {
-                const value = select.value;
-
-                if (value === 'Sakit') {
-                    document.getElementById('bukti_sakit').style.display = 'block';
-                    document.getElementById('alasan-cuti').style.display = 'none';
-                } else if (value === 'Cuti') {
-                    document.getElementById('bukti_sakit').style.display = 'none';
-                    document.getElementById('alasan-cuti').style.display = 'block';
-                } else { // Hadir
-                    document.getElementById('bukti_sakit').style.display = 'none';
-                    document.getElementById('alasan-cuti').style.display = 'none';
-                }
-            });
-
-            imageInput.addEventListener('change', function() {
-                const oFReader = new FileReader();
-                oFReader.readAsDataURL(imageInput.files[0]);
-
-                oFReader.onload = function(oFREvent) {
-                    imgPreview.src = oFREvent.target.result;
-                    imgPreview.style.display = 'block';
-                }
-            });
 
             function updateTime() {
                 const timeInput = document.getElementById('out');
@@ -133,6 +93,6 @@
 
             setInterval(updateTime, 1000);
             updateTime();
-        });
+        
     </script>
 </x-app-layout>

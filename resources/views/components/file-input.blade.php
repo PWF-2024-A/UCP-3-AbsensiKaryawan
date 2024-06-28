@@ -1,3 +1,3 @@
 @props(['onchange' => ''])
 
-<input type="file" {{ $attributes->merge(['class' => 'block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100']) }} onchange="{{ $onchange }}">
+<input type="file" {{ $attributes->merge(['class' => 'block w-full text-sm text-gray-500 py-2 px-4 rounded-md border-0 text-sm font-semibold bg-indigo-50 text-indigo-700 hover:bg-indigo-100']) }} onchange="{{ $onchange }}">

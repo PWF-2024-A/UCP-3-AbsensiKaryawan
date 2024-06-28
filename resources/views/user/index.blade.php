@@ -3,6 +3,7 @@
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Data Karyawan') }}
         </h2>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     </x-slot>
 
     <div class="py-12">
@@ -32,7 +33,7 @@
                                 <th scope="col" class="px-6 py-3">
                                     Name
                                 </th>
-                                <th scope="col" class="hidden px-6 py-3 md:block">
+                                <th scope="col" class="px-6 py-3">
                                     Email
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -50,15 +51,15 @@
                             @forelse ($users as $user)
                             <tr class="odd:bg-white odd:dark:bg-gray-800 even:bg-gray-50 even:dark:bg-gray-700">
                                 <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <p>{{ $user->id }}</p>
                                 </td>
                                 <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <p>{{ $user->name }}</p>
                                 </td>
                                 <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <p>{{ $user->email }}</p>
                                 </td>
                                 <td scope="row"
@@ -66,22 +67,13 @@
                                     <p>{{ $user->address }}</p>
                                 </td>
                                 <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <p>{{ $user->phonenumber }}</p>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex space-x-3">
-                                        <a href="{{ route('user.edit', $user) }}" class="text-blue-400 hover:underline dark:text-blue-200" >
-                                            Edit
-                                        </a>
-                                        <form action="{{ route('user.destroy', $user) }}" method="Post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit"
-                                            class="text-red-600 dark:text-red-400 whitespace-nowrap">
-                                                Delete
-                                            </button>
-                                        </form>
+                                <td class="px-2 py-4 ">
+                                    <div class="flex space-x-2 justify-items-center ">
+                                        <x-edit-button href="{{ route('user.edit', $user) }}" />
+                                        <x-delete-button :action="route('user.destroy', $user)" />
                                     </div>
                                 </td>
                             </tr>

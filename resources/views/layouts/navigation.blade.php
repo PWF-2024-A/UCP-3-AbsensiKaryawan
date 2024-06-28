@@ -25,16 +25,16 @@
                                 {{ __('Divisi') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
+                            <x-nav-link :href="route('user.report')" :active="request()->routeIs('user.report')">
                                 {{ __('Report') }}
                             </x-nav-link>
                         @else
                         <x-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.*')">
                             {{ __('Presence') }}
                         </x-nav-link>
-                        {{-- <x-nav-link :href="route('')" :active="request()->routeIs('')">
+                        <x-nav-link :href="route('user.report')" :active="request()->routeIs('user.report')">
                             {{ __('Report') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
                         @endif
                     @endauth
 
@@ -114,16 +114,16 @@
                 <x-responsive-nav-link :href="route('division.index')" :active="request()->routeIs('division.index')">
                     {{ __('Divisi') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
+                <x-responsive-nav-link :href="route('user.report')" :active="request()->routeIs('user.report')">
                     {{ __('Report') }}
                 </x-responsive-nav-link>
                 @else
                 <x-responsive-nav-link :href="route('presensi.index')" :active="request()->routeIs('presensi.index')">
                     {{ __('Presence') }}
                 </x-responsive-nav-link>
-                {{-- <x-responsive-nav-link :href="route('')" :active="request()->routeIs('')">
+                <x-responsive-nav-link :href="route('user.report')" :active="request()->routeIs('user.report')">
                     {{ __('Report') }}
-                </x-responsive-nav-link> --}}
+                </x-responsive-nav-link>
                 @endif
             @endauth
             <script>

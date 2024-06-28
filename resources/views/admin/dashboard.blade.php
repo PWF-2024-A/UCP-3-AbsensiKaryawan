@@ -12,20 +12,16 @@
                     {{ __("You're logged in!") }}
 
                     <div class="mt-4">
-
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             <!-- Card 1 - Jumlah Karyawan Terdaftar -->
                             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-700">
                                 <div class="p-6">
                                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-200">
-                                        Jumlah Karyawan Terdaftar
+                                        Employees Registered
                                     </h3>
                                     <p class="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-200">
                                         {{ $total_users }}
                                     </p>
-                                    {{-- <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                                        Total Pengguna
-                                    </p> --}}
                                 </div>
                             </div>
 
@@ -33,10 +29,10 @@
                             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-700">
                                 <div class="p-6">
                                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-200">
-                                        Jumlah Karyawan Presensi Hari Ini
+                                        Total Presence at {{ date('l') }}
                                     </h3>
-                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                        Card 2 Description lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    <p class="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-200">
+                                        {{ $total_presence }}
                                     </p>
                                 </div>
                             </div>
@@ -45,10 +41,10 @@
                             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-700">
                                 <div class="p-6">
                                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-200">
-                                        Jumlah Karyawan Presensi Bulan Ini
+                                        Employees Presence at {{ date('F Y') }}
                                     </h3>
-                                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                                        Card 3 Description lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    <p class="mt-2 text-4xl font-bold text-gray-900 dark:text-gray-200">
+                                        {{ $monthly_presence }}
                                     </p>
                                 </div>
                             </div>
